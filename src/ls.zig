@@ -1,6 +1,5 @@
 const std = @import("std");
 const fs = std.fs;
-const mem = std.mem;
 const stderr = std.io.getStdErr();
 const stdout = std.io.getStdOut();
 
@@ -19,7 +18,7 @@ pub fn main() !void {
 }
 
 fn ls(path: []const u8) !void {
-    var dir = try fs.cwd().openIterableDir(path, .{});
+    var dir = try fs.cwd().openDir(path, .{ .iterate= true});
     defer dir.close();
 
     var iter = dir.iterate();
