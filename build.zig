@@ -7,7 +7,7 @@ pub fn build(b: *std.Build) void {
     {
         const ls = b.addExecutable(.{
             .name = "zig-ls",
-            .root_source_file = .{ .path = "src/ls.zig" },
+            .root_source_file = b.path("src/ls.zig"),
             .target = target,
             .optimize = optimize,
         });
@@ -17,7 +17,7 @@ pub fn build(b: *std.Build) void {
     {
         const tee = b.addExecutable(.{
             .name = "zig-tee",
-            .root_source_file = .{ .path = "src/tee.zig" },
+            .root_source_file = b.path("src/tee.zig"),
             .target = target,
             .optimize = optimize,
         });
